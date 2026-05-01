@@ -2,6 +2,7 @@ package FallingObjects;
 
 import Player.Player;
 
-public interface BadItem {
+public interface CatchingItem {
+
     public void catched(Player p);
 }

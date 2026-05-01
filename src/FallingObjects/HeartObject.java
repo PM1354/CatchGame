@@ -4,10 +4,10 @@ import Player.Player;
 
 import java.awt.*;
 
-public class HeartObject extends Object implements GoodItem{
-    private Color clr = new Color(255,0,0);
-    public HeartObject(int hitboxesX, int hitboxesY) {
-        super(hitboxesX, hitboxesY);
+public class HeartObject extends Object implements CatchingItem {
+
+    public HeartObject(int x, int y, int a, int speed, boolean catched) {
+        super(x, y, a, speed, catched);
     }
 
     @Override
@@ -15,3 +15,4 @@ public class HeartObject extends Object implements GoodItem{
 
     }
 }
+

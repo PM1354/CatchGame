@@ -4,14 +4,14 @@ import Player.Player;
 
 import java.awt.*;
 
-public class NormalBadObject extends Object implements BadItem{
-    private Color clr = new Color(38, 76, 48, 126);
-    public NormalBadObject(int hitboxesX, int hitboxesY) {
-        super(hitboxesX, hitboxesY);
+public class NormalBadObject extends Object implements CatchingItem{
+
+    public NormalBadObject(int x, int y, int a, int speed, boolean catched) {
+        super(x, y, a, speed, catched);
     }
 
     @Override
     public void catched(Player p) {
-        p.setScore(p.getScore()-500);
+
     }
 }

@@ -4,14 +4,14 @@ import Player.Player;
 
 import java.awt.*;
 
-public class BombObject extends Object implements BadItem{
-    private Color clr = new Color(181, 151, 151, 26);
-    public BombObject(int hitboxesX, int hitboxesY) {
-        super(hitboxesX, hitboxesY);
+public class BombObject extends Object implements CatchingItem{
+
+    public BombObject(int x, int y, int a, int speed, boolean catched) {
+        super(x, y, a, speed, catched);
     }
 
     @Override
     public void catched(Player p) {
-        p.setHearts(p.getHearts()-1);
+
     }
 }

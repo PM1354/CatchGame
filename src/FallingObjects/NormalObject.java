@@ -4,16 +4,14 @@ import Player.Player;
 
 import java.awt.*;
 
-public class NormalObject extends Object implements GoodItem{
-    private Color clr = new Color(255, 203, 0, 255);
+public class NormalObject extends Object implements CatchingItem {
 
-    public NormalObject(int hitboxesX, int hitboxesY) {
-        super(hitboxesX, hitboxesY);
-        this.clr = clr;
+    public NormalObject(int x, int y, int a, int speed, boolean catched) {
+        super(x, y, a, speed, catched);
     }
 
     @Override
     public void catched(Player p) {
-        p.setScore(p.getScore()+100);
+
     }
 }
