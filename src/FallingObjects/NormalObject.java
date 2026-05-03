@@ -6,12 +6,26 @@ import java.awt.*;
 
 public class NormalObject extends Object implements CatchingItem {
 
+    private final Color primary = new Color(255, 150, 0);
+    private final Color border = new Color(0,0,0);
+
     public NormalObject(int x, int y, int a, int speed, boolean catched) {
-        super(x, y, a, speed, catched);
+        super(x, y, 20, speed, false);
+    }
+
+    @Override
+    public Color getColor() {
+        return primary;
+    }
+
+    @Override
+    public String playerCatcheObjectString() {
+        return "+100\uD83D\uDC94";
     }
 
     @Override
     public void catched(Player p) {
-
+        p.addScore(100);
+        playerCatcheObject();
     }
 }

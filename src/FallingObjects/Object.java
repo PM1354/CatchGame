@@ -1,5 +1,7 @@
 package FallingObjects;
 
+import java.awt.*;
+
 public abstract class Object {
     private int a;
     private int x;
@@ -15,13 +17,18 @@ public abstract class Object {
         this.catched = false;
     }
 
+    public abstract Color getColor();
+
     public void falling(){
         y+=speed;
     }
 
-    private void playerCatcheObject(){
+    public void playerCatcheObject(){
         catched=true;
     }
+
+
+    public abstract String playerCatcheObjectString();
 
     public int getA() {
         return a;

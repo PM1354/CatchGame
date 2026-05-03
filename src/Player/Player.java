@@ -1,7 +1,7 @@
 package Player;
 
 public class Player {
-    private final int hitboxesX;
+    private int hitboxesX;
     private final int hitboxesY;
     private final int maxhearts;
     private int score;
@@ -57,6 +57,8 @@ public class Player {
         score +=i;
     }
 
+    public void looseScore(int i){score+=i;}
+
     public void addHears(int i){
         if (hearts<maxhearts){
             hearts +=i;
@@ -82,5 +84,9 @@ public class Player {
 
     public void moveLeft(){
         x = x-speed;
+    }
+
+    public void biggerPlatform(){
+        hitboxesX+=10;
     }
 }
