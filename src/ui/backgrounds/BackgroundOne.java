@@ -1,4 +1,4 @@
-package ui;
+package ui.backgrounds;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

@@ -28,4 +28,8 @@ public class NormalObject extends Object implements CatchingItem {
         p.addScore(100);
         playerCatcheObject();
     }
+
+    public void darwObject (Graphics2D g2d){
+        g2d.draw(new Polygon());
+    }
 }

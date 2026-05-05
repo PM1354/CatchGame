@@ -1,5 +1,7 @@
 package ui;
 
+import ui.backgrounds.BackgroundOne;
+
 import javax.swing.*;
 import java.awt.*;
 
