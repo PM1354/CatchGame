@@ -12,23 +12,35 @@ public class StartScreen {
 
     public void innit(){
         frame.setSize(800,1000);
-        frame.setPreferredSize(new Dimension(800,1200));
+        frame.setPreferredSize(new Dimension(600,1000));
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        JPanel jpanel = new JPanel();
-        jpanel.setLayout(new BoxLayout(jpanel,BoxLayout.Y_AXIS));
-        frame.setBackground(Color.blue);
+
+        JPanel jpanel = new BackgroundOne();
+        jpanel.setLayout(new GridBagLayout());
+
+        JPanel inner = new JPanel(new GridLayout(3,1,10,15));
+        inner.setBackground(new Color(255, 255, 255, 0));
+        inner.setPreferredSize(new Dimension(250,400));
+
+        JLabel title = new JLabel("CATCH GAME",SwingConstants.CENTER);
+        title.setForeground(Color.BLACK);
+        title.setFont(new Font("Arial", Font.BOLD,30));
 
         JButton jbstart = new JButton("START");
-        jbstart.setForeground( new Color(133, 126, 126));
-        jbstart.setBackground(Color.RED);
+        jbstart.setBackground( new Color(235, 175, 255));
+        jbstart.setForeground(Color.WHITE);
 
         JButton jbhighscore = new JButton("HIGHEST SCORE");
-        jbhighscore.setForeground( new Color(133, 126, 126));
-        jbhighscore.setBackground(Color.RED);
-        jpanel.add(jbstart);
-        jpanel.add(jbhighscore);
+        jbhighscore.setBackground( new Color(235, 175, 255));
+        jbhighscore.setForeground(Color.WHITE);
+
+        inner.add(title);
+        inner.add(jbstart);
+        inner.add(jbhighscore);
+
+        jpanel.add(inner);
 
         frame.add(jpanel);
         frame.setVisible(true);
