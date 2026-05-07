@@ -9,7 +9,7 @@ public class NormalBadObject extends Object implements CatchingItem{
     private final Color primary = new Color(12, 67, 36);
     private final Color borde = new Color(0,0,0);
 
-    public NormalBadObject(int x, int y, int a, int speed, boolean catched) {
+    public NormalBadObject(int speed) {
         super(x, y, 20, speed, false);
     }
 
@@ -20,7 +20,7 @@ public class NormalBadObject extends Object implements CatchingItem{
 
     @Override
     public String playerCatcheObjectString() {
-        return "-500\uD83C\uDF1F";
+        return "-500⭐";
     }
 
     @Override

@@ -1,9 +1,13 @@
 package ui;
 
+import FallingObjects.NormalBadObject;
+import FallingObjects.NormalObject;
 import ui.backgrounds.BackgroundOne;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class StartScreen {
     private JFrame frame;
@@ -30,18 +34,25 @@ public class StartScreen {
         title.setForeground(Color.BLACK);
         title.setFont(new Font("Arial", Font.BOLD,30));
 
-        JButton jbstart = new JButton("START");
+        JButton jbstart = new JButton("▶ START");
         jbstart.setBackground( new Color(235, 175, 255));
         jbstart.setForeground(Color.WHITE);
 
-        JButton jbhighscore = new JButton("HIGHEST SCORE");
+        JButton jbhighscore = new JButton("⭐HIGHEST SCORE⭐");
         jbhighscore.setBackground( new Color(235, 175, 255));
         jbhighscore.setForeground(Color.WHITE);
+
+        jbstart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GameScreen gms = new GameScreen();
+                frame.dispose();
+            }
+        });
 
         inner.add(title);
         inner.add(jbstart);
         inner.add(jbhighscore);
-
         jpanel.add(inner);
 
         frame.add(jpanel);
