@@ -9,7 +9,7 @@ public class NormalBadObject extends Object implements CatchingItem{
     private final Color primary = new Color(12, 67, 36);
     private final Color borde = new Color(0,0,0);
 
-    public NormalBadObject(int speed) {
+    public NormalBadObject(int x, int y,int speed) {
         super(x, y, 20, speed, false);
     }
 
