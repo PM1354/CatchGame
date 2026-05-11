@@ -41,6 +41,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         floatingLabels.clear();
         leftPressed= false;
         rightPressed= false;
+        requestFocusInWindow();
         gameTimer.start();
     }
 
@@ -73,6 +74,8 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
     }
 
     private void update() {
+        System.out.println(player.getScore());
+        System.out.println(manager.getCurrentWave());
         if (leftPressed) {
             player.moveLeft();
         }
@@ -150,13 +153,14 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         g2d.setColor(new Color(200, 200, 255));
         String waveStr = "Wave " + manager.getCurrentWave();
         int ww = g2d.getFontMetrics().stringWidth(waveStr);
-        g2d.drawString(waveStr, (width - ww) / 2, HEIGHT - 8);
+        g2d.drawString(waveStr, (width - ww) / 2, height - 8);
     }
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        if (player == null || manager == null) return;
         drawFallingObjects(g2d);
         drawBasket(g2d);
         drawFloatingLabels(g2d);
