@@ -42,15 +42,15 @@ public class Wawemanager {
     private FallingObject createObject(int x) {
         float speed = speedbase + (currentWave - 1) * speedplus;
         int   roll  = random.nextInt(100);
-
-        if (roll < 65){
+        if (roll < 50){
             return new NormalFallingObject(x, -30, speed);
-        } else if (roll < 80){
+        } else if (roll<80) {
+            return new BombFallingObject(x,-30,speed);
+        } else if (roll < 85){
             return new NormalBadFallingObject(x, -30, speed);
-        }
-        else if (roll < 94){
-            return new LargerPlatformFallingObject(x, -30, speed);}
-        else{
+        } else if (roll < 95){
+            return new LargerPlatformFallingObject(x, -30, speed);
+        } else{
             return new HeartFallingObject(x, -30, speed);
         }
     }

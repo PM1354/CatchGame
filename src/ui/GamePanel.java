@@ -57,15 +57,15 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         return player != null ? player.getScore() : 0;
     }
 
-    private boolean isColliding(FallingObject obj) {
+    public boolean isColliding(FallingObject obj) {
         int left  = player.getX() - player.getHitboxesX() / 2;
-        int right = player.getX() + player.getHitboxesY()/ 2;
+        int right = player.getX() + player.getHitboxesX()/ 2;
         int top   = player.getY();
         int bot   = player.getY() + player.getHitboxesY();
         return obj.getX() >= left - 8 && obj.getX() <= right + 8 && obj.getY() >= top - 5 && obj.getY() <= bot;
     }
 
-    private void Collision(FallingObject obj) {
+    public void Collision(FallingObject obj) {
         if (obj instanceof CatchingItem c) {
             c.catched(player);
         }
@@ -73,7 +73,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         obj.playerCatcheObject();
     }
 
-    private void update() {
+    public void update() {
         System.out.println(player.getScore());
         System.out.println(manager.getCurrentWave());
         if (leftPressed) {
@@ -110,15 +110,18 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
             fallingObjects.clear();
             resumeGame();
         }
+        if (!player.isAlive()){
+            stopGame();
+        }
     }
 
-    private void drawFallingObjects(Graphics2D g2d) {
+    public void drawFallingObjects(Graphics2D g2d) {
         for (FallingObject obj : fallingObjects) {
             obj.drawCircle(g2d, obj.getColor());
         }
     }
 
-    private void drawBasket(Graphics2D g2d) {
+    public void drawBasket(Graphics2D g2d) {
         int x = player.getX() - player.getHitboxesX()/2;
         int y = player.getY();
         int w = player.getHitboxesX();
@@ -130,30 +133,26 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         g2d.drawRoundRect(x,y,w,h,10,10);
     }
 
-    private void drawFloatingLabels(Graphics2D g2d) {
+    public void drawFloatingLabels(Graphics2D g2d) {
         for (GameTexts txt : floatingLabels) {
             txt.draw(g2d);
         }
     }
 
 
-    private void drawHUD(Graphics2D g2d) {
+    public void drawHUD(Graphics2D g2d) {
         g2d.setColor(new Color(0, 0, 0, 100));
         g2d.fillRect(0, 0, width, 48);
         g2d.setFont(new Font("Arial", Font.BOLD, 18));
         g2d.setColor(new Color(220, 60, 90));
         StringBuilder hearts = new StringBuilder();
         for (int i = 0; i < player.getHearts(); i++) hearts.append("♥ ");
-        g2d.drawString(hearts.toString().trim(), 10, 30);
+        g2d.drawString(hearts.toString(), 10, 30);
         g2d.setColor(Color.WHITE);
         String score = "Score: " + getScore();
-        int sw = g2d.getFontMetrics().stringWidth(score);
-        g2d.drawString(score, width - sw - 10, 30);
-        g2d.setFont(new Font("Arial", Font.BOLD, 13));
-        g2d.setColor(new Color(200, 200, 255));
-        String waveStr = "Wave " + manager.getCurrentWave();
-        int ww = g2d.getFontMetrics().stringWidth(waveStr);
-        g2d.drawString(waveStr, (width - ww) / 2, height - 8);
+        g2d.drawString(score, 450, 30);
+        String wave = "Wave " + manager.getCurrentWave();
+        g2d.drawString(wave, 250, 30);
     }
 
     protected void paintComponent(Graphics g) {

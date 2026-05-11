@@ -57,7 +57,7 @@ public class Player {
         score +=i;
     }
 
-    public void looseScore(int i){score+=i;}
+    public void looseScore(int i){score-=i;}
 
     public void addHears(int i){
         if (hearts<maxhearts){
