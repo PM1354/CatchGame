@@ -9,7 +9,7 @@ public class HeartObject extends Object implements CatchingItem {
     private final Color primary = new Color(255, 0, 0);
     private final Color border = new Color(0,0,0);
 
-    public HeartObject(int x, int y, int a, int speed, boolean catched) {
+    public HeartObject(int x, int y, float speed) {
         super(x, y, 20, speed, false);
     }
 

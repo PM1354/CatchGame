@@ -9,7 +9,7 @@ public class LargerPlatformObject extends Object implements CatchingItem {
     private final Color primary = new Color(50,100,255);
     private final Color border = new Color(0,0,0);
 
-    public LargerPlatformObject(int x, int y, int a, int speed, boolean catched) {
+    public LargerPlatformObject(int x, int y, float speed) {
         super(x, y, 20, speed, false);
     }
 

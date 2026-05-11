@@ -9,7 +9,7 @@ public class NormalObject extends Object implements CatchingItem {
     private final Color primary = new Color(255, 150, 0);
     private final Color border = new Color(0,0,0);
 
-    public NormalObject(int x, int y,int speed) {
+    public NormalObject(int x, int y,float speed) {
         super(x, y, 20, speed, false);
     }
 

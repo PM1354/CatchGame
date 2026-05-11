@@ -24,8 +24,6 @@ public class GameScreen {
         frame.pack();
 
         Player p = new Player(20,100);
-        while (p.isAlive()){
 
-        }
     }
 }

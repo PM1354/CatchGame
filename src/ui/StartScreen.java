@@ -42,12 +42,9 @@ public class StartScreen {
         jbhighscore.setBackground( new Color(235, 175, 255));
         jbhighscore.setForeground(Color.WHITE);
 
-        jbstart.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                GameScreen gms = new GameScreen();
-                frame.dispose();
-            }
+        jbstart.addActionListener(e -> {
+            frame.dispose();
+            new GameScreen();
         });
 
         inner.add(title);
