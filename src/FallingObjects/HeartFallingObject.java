@@ -4,12 +4,12 @@ import Player.Player;
 
 import java.awt.*;
 
-public class HeartObject extends Object implements CatchingItem {
+public class HeartFallingObject extends FallingObject implements CatchingItem {
 
     private final Color primary = new Color(255, 0, 0);
     private final Color border = new Color(0,0,0);
 
-    public HeartObject(int x, int y, float speed) {
+    public HeartFallingObject(int x, int y, float speed) {
         super(x, y, 20, speed, false);
     }
 

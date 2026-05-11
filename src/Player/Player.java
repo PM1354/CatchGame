@@ -43,14 +43,14 @@ public class Player {
     }
 
     public Player(int height, int width) {
-        this.hitboxesY = 16;
-        this.hitboxesX = 80;
+        this.hitboxesY = 40;
+        this.hitboxesX = 180;
         this.maxhearts = 5;
         this.score = 0;
         this.hearts = 3;
         this.speed =6;
         this.x =width/2;
-        this.y= height-40;
+        this.y= height-70;
     }
 
     public void addScore(int i){

@@ -2,14 +2,14 @@ package FallingObjects;
 
 import java.awt.*;
 
-public abstract class Object {
+public abstract class FallingObject {
     private int a;
     private int x;
     private int y;
     private float speed;
     private boolean catched;
 
-    public Object(int x, int y, int a,float speed,boolean catched) {
+    public FallingObject(int x, int y, int a, float speed, boolean catched) {
         this.a=a;
         this.x=x;
         this.y=y;
@@ -29,6 +29,11 @@ public abstract class Object {
 
 
     public abstract String playerCatcheObjectString();
+
+    public void update() {
+
+        y += (int) speed;
+    }
 
     public int getA() {
         return a;
@@ -50,12 +55,10 @@ public abstract class Object {
         return catched;
     }
 
-    public void drawCircle(Graphics2D g2d, Color fill, Color border) {
+    public void drawCircle(Graphics2D g2d, Color fill) {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(fill);
         g2d.fillOval(x - a / 2, y - a / 2, a, a);
-        g2d.setColor(border);
-        g2d.setStroke(new java.awt.BasicStroke(2f));
         g2d.drawOval(x - a / 2, y - a / 2, a, a);
     }
 }

@@ -1,17 +1,17 @@
 package manager;
 
 import FallingObjects.*;
-import FallingObjects.Object;
+import FallingObjects.FallingObject;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Wawemanager {
-    private static final int ticksforwave = 60 * 20;
-    private static final int spawninterval =50;
-    private static final float speedbase = 2.5f;
-    private static final float speedplus = 0.5f;
+    private final int ticksforwave = 60 * 20;
+    private final int spawninterval =50;
+    private final float speedbase = 2.5f;
+    private final float speedplus = 0.5f;
     private int currentWave;
     private int tickselapsed;
     private int tickssincespawn;
@@ -35,25 +35,28 @@ public class Wawemanager {
         tickselapsed    = 0;
         tickssincespawn = 0;
     }
+    public boolean isWaveComplete()  {
+        return tickselapsed >= ticksforwave;
+    }
 
-    private Object createObject(int x) {
+    private FallingObject createObject(int x) {
         float speed = speedbase + (currentWave - 1) * speedplus;
         int   roll  = random.nextInt(100);
 
         if (roll < 65){
-            return new NormalObject(x, -30, speed);
+            return new NormalFallingObject(x, -30, speed);
         } else if (roll < 80){
-            return new NormalBadObject(x, -30, speed);
+            return new NormalBadFallingObject(x, -30, speed);
         }
         else if (roll < 94){
-            return new LargerPlatformObject(x, -30, speed);}
+            return new LargerPlatformFallingObject(x, -30, speed);}
         else{
-            return new HeartObject(x, -30, speed);
+            return new HeartFallingObject(x, -30, speed);
         }
     }
 
-    private List<Object> spawnObjects() {
-        List<Object> list = new ArrayList<>();
+    private List<FallingObject> spawnObjects() {
+        List<FallingObject> list = new ArrayList<>();
         int count = (currentWave >= 4 && random.nextInt(3) == 0) ? 2 : 1;
         for (int i = 0; i < count; i++) {
             int x = random.nextInt(panelwidth - 80) + 40;
@@ -62,8 +65,8 @@ public class Wawemanager {
         return list;
     }
 
-    public List<Object> update() {
-        List<Object> spawned = new ArrayList<>();
+    public List<FallingObject> update() {
+        List<FallingObject> spawned = new ArrayList<>();
         tickselapsed++;
         tickssincespawn++;
         int spawnInterval = Math.max(15, spawninterval - (currentWave - 1) * 5);
@@ -72,5 +75,21 @@ public class Wawemanager {
             tickssincespawn = 0;
         }
         return spawned;
+    }
+
+    public int getCurrentWave() {
+        return currentWave;
+    }
+
+    public int getTickselapsed() {
+        return tickselapsed;
+    }
+
+    public int getTickssincespawn() {
+        return tickssincespawn;
+    }
+
+    public int getTicksforwave() {
+        return ticksforwave;
     }
 }

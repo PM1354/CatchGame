@@ -4,12 +4,12 @@ import Player.Player;
 
 import java.awt.*;
 
-public class BombObject extends Object implements CatchingItem{
+public class BombFallingObject extends FallingObject implements CatchingItem{
 
     private final Color primary = new Color(67,68,69);
     private final Color border = new Color(0,0,0);
 
-    public BombObject(int x, int y, float speed) {
+    public BombFallingObject(int x, int y, float speed) {
         super(x, y, 20, speed, false);
     }
 

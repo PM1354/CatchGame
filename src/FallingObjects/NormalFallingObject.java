@@ -4,12 +4,12 @@ import Player.Player;
 
 import java.awt.*;
 
-public class NormalBadObject extends Object implements CatchingItem{
+public class NormalFallingObject extends FallingObject implements CatchingItem {
 
-    private final Color primary = new Color(12, 67, 36);
-    private final Color borde = new Color(0,0,0);
+    private final Color primary = new Color(255, 150, 0);
+    private final Color border = new Color(0,0,0);
 
-    public NormalBadObject(int x, int y,float speed) {
+    public NormalFallingObject(int x, int y, float speed) {
         super(x, y, 20, speed, false);
     }
 
@@ -20,12 +20,12 @@ public class NormalBadObject extends Object implements CatchingItem{
 
     @Override
     public String playerCatcheObjectString() {
-        return "-500⭐";
+        return "+100⭐";
     }
 
     @Override
     public void catched(Player p) {
-        p.looseScore(500);
+        p.addScore(100);
         playerCatcheObject();
     }
 }

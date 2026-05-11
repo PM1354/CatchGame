@@ -1,13 +1,9 @@
 package ui;
 
-import FallingObjects.NormalBadObject;
-import FallingObjects.NormalObject;
 import ui.backgrounds.BackgroundOne;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class StartScreen {
     private JFrame frame;
@@ -44,7 +40,8 @@ public class StartScreen {
 
         jbstart.addActionListener(e -> {
             frame.dispose();
-            new GameScreen();
+            GameScreen gs = new GameScreen();
+            gs.startGame();
         });
 
         inner.add(title);

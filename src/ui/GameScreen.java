@@ -7,6 +7,7 @@ import java.awt.*;
 
 public class GameScreen {
     private JFrame frame;
+    private GamePanel gamePanel;
 
     public GameScreen(){
         frame = new JFrame();
@@ -19,11 +20,18 @@ public class GameScreen {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
+        frame.setBackground(Color.DARK_GRAY);
+
+        gamePanel = new GamePanel();
+        frame.add(gamePanel);
 
         frame.setVisible(true);
         frame.pack();
-
-        Player p = new Player(20,100);
-
     }
+
+    public void startGame() {
+        frame.setVisible(true);
+        gamePanel.startGame();
+    }
+
 }
