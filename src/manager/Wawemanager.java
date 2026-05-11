@@ -39,7 +39,7 @@ public class Wawemanager {
         return tickselapsed >= ticksforwave;
     }
 
-    private FallingObject createObject(int x) {
+    public FallingObject createObject(int x) {
         float speed = speedbase + (currentWave - 1) * speedplus;
         int   roll  = random.nextInt(100);
         if (roll < 50){
@@ -55,7 +55,7 @@ public class Wawemanager {
         }
     }
 
-    private List<FallingObject> spawnObjects() {
+    public List<FallingObject> spawnObjects() {
         List<FallingObject> list = new ArrayList<>();
         int count = (currentWave >= 4 && random.nextInt(3) == 0) ? 2 : 1;
         for (int i = 0; i < count; i++) {
