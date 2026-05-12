@@ -10,7 +10,7 @@ public class BackgroundOne extends JPanel {
 
     public BackgroundOne(){
         try {
-            image = ImageIO.read(getClass().getResource("/image1.jpg"));
+            image = ImageIO.read(getClass().getResource("/image.png"));
         }catch (IOException e){
             e.printStackTrace();
         }

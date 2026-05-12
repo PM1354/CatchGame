@@ -13,7 +13,7 @@ import java.awt.*;
 
     public EndScreen(int score){
         frame = new JFrame();
-        score = score;
+        this.score = score;
         innit();
     }
 
@@ -25,7 +25,7 @@ import java.awt.*;
         inner.setBackground(new Color(255, 255, 255, 0));
         inner.setPreferredSize(new Dimension(250,400));
 
-        frame.setSize(800,1000);
+        frame.setSize(600,1000);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setPreferredSize(new Dimension(800,1000));

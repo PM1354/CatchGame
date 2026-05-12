@@ -13,7 +13,7 @@ public class StartScreen {
     }
 
     public void innit(){
-        frame.setSize(800,1000);
+        frame.setSize(600,1000);
         frame.setPreferredSize(new Dimension(600,1000));
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

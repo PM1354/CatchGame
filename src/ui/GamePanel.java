@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class GamePanel extends JPanel implements KeyListener, ActionListener {
-    public static final int width  = 800;
+public class GamePanel extends BackgroundOne implements KeyListener, ActionListener {
+    public static final int width  = 600;
     public static final int height = 1000;
     private static final int ticks = 16;
     private Player player;
@@ -28,18 +28,18 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
     private final Timer gameTimer;
     private boolean leftPressed;
     private boolean rightPressed;
-    private GameScreen gs = new GameScreen();
+    private GameScreen gs;
 
-    public GamePanel() {
+    public GamePanel(GameScreen gs) {
+        this.gs = gs;
         setPreferredSize(new Dimension(width, height));
         setFocusable(true);
         addKeyListener(this);
         gameTimer = new Timer(ticks, this);
-
     }
 
     public void startGame() {
-        player = new Player(1000,800);
+        player = new Player(1000,600);
         manager= new Wawemanager(width);
         fallingObjects.clear();
         floatingLabels.clear();
@@ -78,8 +78,6 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
     }
 
     public void update() {
-        System.out.println(player.getScore());
-        System.out.println(manager.getCurrentWave());
         if (leftPressed) {
             player.moveLeft();
         }
@@ -116,7 +114,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         }
         if (!player.isAlive()){
             stopGame();
-            gs.gameOver();
+            gs.gameOver(player.getScore());
         }
     }
 

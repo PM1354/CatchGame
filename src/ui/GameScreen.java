@@ -21,7 +21,7 @@ public class GameScreen {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 
-        gamePanel = new GamePanel();
+        gamePanel = new GamePanel(this);
         frame.add(gamePanel);
 
         frame.setVisible(true);
@@ -33,9 +33,9 @@ public class GameScreen {
         gamePanel.startGame();
     }
 
-    public void gameOver(){
-        EndScreen es = new EndScreen(gamePanel.getScore());
-        frame.dispose();
+    public void gameOver(int score){
+        EndScreen es = new EndScreen(score);
+        frame.setVisible(false);
     }
 
 }
