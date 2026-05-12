@@ -27,15 +27,20 @@ public class StartScreen {
         inner.setPreferredSize(new Dimension(250,400));
 
         JLabel title = new JLabel("CATCH GAME",SwingConstants.CENTER);
+        title.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
         title.setForeground(Color.BLACK);
-        title.setFont(new Font("Arial", Font.BOLD,30));
 
-        JButton jbstart = new JButton("▶ START");
-        jbstart.setBackground( new Color(235, 175, 255));
+
+        JButton jbstart = new JButton("START");
+        jbstart.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
+       // jbstart.setBackground( new Color(235, 175, 255, 0));
+        jbstart.setBackground(Color.BLACK);
         jbstart.setForeground(Color.WHITE);
 
-        JButton jbhighscore = new JButton("⭐HIGHEST SCORE⭐");
-        jbhighscore.setBackground( new Color(235, 175, 255));
+        JButton jbhighscore = new JButton("HIGHSCORE");
+        jbhighscore.setFont(new Font("Comic Sans MS", Font.PLAIN, 30));
+        //jbhighscore.setBackground( new Color(235, 175, 255, 0));
+        jbhighscore.setBackground(Color.BLACK);
         jbhighscore.setForeground(Color.WHITE);
 
         jbstart.addActionListener(e -> {

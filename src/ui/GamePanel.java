@@ -5,6 +5,8 @@ import FallingObjects.FallingObject;
 import Player.Player;
 import Player.Texts.GameTexts;
 import manager.Wawemanager;
+import ui.backgrounds.BackgroundOne;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -26,12 +28,14 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
     private final Timer gameTimer;
     private boolean leftPressed;
     private boolean rightPressed;
+    private GameScreen gs = new GameScreen();
 
     public GamePanel() {
         setPreferredSize(new Dimension(width, height));
         setFocusable(true);
         addKeyListener(this);
         gameTimer = new Timer(ticks, this);
+
     }
 
     public void startGame() {
@@ -112,6 +116,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         }
         if (!player.isAlive()){
             stopGame();
+            gs.gameOver();
         }
     }
 
@@ -146,8 +151,11 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         g2d.setFont(new Font("Arial", Font.BOLD, 18));
         g2d.setColor(new Color(220, 60, 90));
         StringBuilder hearts = new StringBuilder();
-        for (int i = 0; i < player.getHearts(); i++) hearts.append("♥ ");
+        for (int i = 0; i < player.getHearts(); i++){
+            hearts.append("♥ ");
+        }
         g2d.drawString(hearts.toString(), 10, 30);
+        g2d.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
         g2d.setColor(Color.WHITE);
         String score = "Score: " + getScore();
         g2d.drawString(score, 450, 30);
@@ -155,11 +163,16 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         g2d.drawString(wave, 250, 30);
     }
 
+    public void drawBackground(Graphics2D g2d){
+
+    }
+
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         if (player == null || manager == null) return;
+        drawBackground(g2d);
         drawFallingObjects(g2d);
         drawBasket(g2d);
         drawFloatingLabels(g2d);
@@ -181,14 +194,22 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int k = e.getKeyCode();
-        if (k == KeyEvent.VK_LEFT  || k == KeyEvent.VK_A) leftPressed  = true;
-        if (k == KeyEvent.VK_RIGHT || k == KeyEvent.VK_D) rightPressed = true;
+        if (k == KeyEvent.VK_A){
+            leftPressed  = true;
+        }
+        if (k == KeyEvent.VK_D){
+            rightPressed = true;
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         int k = e.getKeyCode();
-        if (k == KeyEvent.VK_LEFT  || k == KeyEvent.VK_A) leftPressed  = false;
-        if (k == KeyEvent.VK_RIGHT || k == KeyEvent.VK_D) rightPressed = false;
+        if (k == KeyEvent.VK_A){
+            leftPressed  = false;
+        }
+        if (k == KeyEvent.VK_D){
+            rightPressed = false;
+        }
     }
 }

@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Random;
 
 public class Wawemanager {
-    private final int ticksforwave = 60 * 20;
+    private final int ticksforwave = 60 * 30;
     private final int spawninterval =50;
     private final float speedbase = 2.5f;
-    private final float speedplus = 0.5f;
+    private final float speedplus = 0.45f;
     private int currentWave;
     private int tickselapsed;
     private int tickssincespawn;
@@ -42,11 +42,11 @@ public class Wawemanager {
     public FallingObject createObject(int x) {
         float speed = speedbase + (currentWave - 1) * speedplus;
         int   roll  = random.nextInt(100);
-        if (roll < 50){
+        if (roll < 60){
             return new NormalFallingObject(x, -30, speed);
         } else if (roll<80) {
             return new BombFallingObject(x,-30,speed);
-        } else if (roll < 85){
+        } else if (roll < 90){
             return new NormalBadFallingObject(x, -30, speed);
         } else if (roll < 95){
             return new LargerPlatformFallingObject(x, -30, speed);

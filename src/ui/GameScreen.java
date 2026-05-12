@@ -20,7 +20,6 @@ public class GameScreen {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
-        frame.setBackground(Color.DARK_GRAY);
 
         gamePanel = new GamePanel();
         frame.add(gamePanel);
@@ -32,6 +31,11 @@ public class GameScreen {
     public void startGame() {
         frame.setVisible(true);
         gamePanel.startGame();
+    }
+
+    public void gameOver(){
+        EndScreen es = new EndScreen(gamePanel.getScore());
+        frame.dispose();
     }
 
 }
