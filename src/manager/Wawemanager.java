@@ -41,7 +41,7 @@ public class Wawemanager {
 
     public FallingObject createObject(int x) {
         float speed = speedbase + (currentWave - 1) * speedplus;
-        int   roll  = random.nextInt(100);
+        int roll = random.nextInt(100);
         if (roll < 60){
             return new NormalFallingObject(x, -30, speed);
         } else if (roll<80) {

@@ -35,7 +35,7 @@ public class GameScreen {
 
     public void gameOver(int score){
         EndScreen es = new EndScreen(score);
-        frame.setVisible(false);
+        frame.dispose();
     }
 
 }

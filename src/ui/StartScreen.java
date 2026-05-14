@@ -49,6 +49,10 @@ public class StartScreen {
             gs.startGame();
         });
 
+        jbhighscore.addActionListener(e->{
+
+        });
+
         inner.add(title);
         inner.add(jbstart);
         inner.add(jbhighscore);

@@ -192,10 +192,10 @@ public class GamePanel extends BackgroundOne implements KeyListener, ActionListe
     @Override
     public void keyPressed(KeyEvent e) {
         int k = e.getKeyCode();
-        if (k == KeyEvent.VK_A){
+        if (k == KeyEvent.VK_A ||k == KeyEvent.VK_LEFT){
             leftPressed  = true;
         }
-        if (k == KeyEvent.VK_D){
+        if (k == KeyEvent.VK_D|| k == KeyEvent.VK_RIGHT){
             rightPressed = true;
         }
     }
@@ -203,10 +203,10 @@ public class GamePanel extends BackgroundOne implements KeyListener, ActionListe
     @Override
     public void keyReleased(KeyEvent e) {
         int k = e.getKeyCode();
-        if (k == KeyEvent.VK_A){
+        if (k == KeyEvent.VK_A|| k == KeyEvent.VK_LEFT){
             leftPressed  = false;
         }
-        if (k == KeyEvent.VK_D){
+        if (k == KeyEvent.VK_D|| k == KeyEvent.VK_RIGHT){
             rightPressed = false;
         }
     }
