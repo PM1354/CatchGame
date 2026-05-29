@@ -9,6 +9,8 @@ public class Player {
     private int x;
     private int y;
     private int hearts;
+    private final int windowWidth;
+    private final int windowHeight;
 
     public int getHitboxesX() {
         return hitboxesX;
@@ -48,9 +50,11 @@ public class Player {
         this.maxhearts = 5;
         this.score = 0;
         this.hearts = 3;
-        this.speed =6;
-        this.x =width/2;
-        this.y= height-70;
+        this.speed = 6;
+        this.x = width / 2;
+        this.y = height - 70;
+        this.windowWidth = width;
+        this.windowHeight = height;
     }
 
     public void addScore(int i){
@@ -79,11 +83,19 @@ public class Player {
     }
 
     public void moveRight(){
-        x = x+speed;
+        x = x + speed;
+        int rightEdge = x + hitboxesX / 2;
+        if (rightEdge > windowWidth) {
+            x = windowWidth - hitboxesX / 2;
+        }
     }
 
     public void moveLeft(){
-        x = x-speed;
+        x = x - speed;
+        int leftEdge = x - hitboxesX / 2;
+        if (leftEdge < 0) {
+            x = hitboxesX / 2;
+        }
     }
 
     public void biggerPlatform(){

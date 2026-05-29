@@ -3,6 +3,7 @@ package ui.backgrounds;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 
 public class BackgroundOne extends JPanel {
@@ -10,7 +11,7 @@ public class BackgroundOne extends JPanel {
 
     public BackgroundOne(){
         try {
-            image = ImageIO.read(getClass().getResource("/image.png"));
+            image = ImageIO.read(new File("resources/image.png"));
         }catch (IOException e){
             e.printStackTrace();
         }

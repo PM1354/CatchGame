@@ -50,7 +50,7 @@ public class StartScreen {
         });
 
         jbhighscore.addActionListener(e->{
-
+            HighScoreScreen hss = new HighScoreScreen(frame);
         });
 
         inner.add(title);
@@ -64,3 +64,4 @@ public class StartScreen {
 
     }
 }
+

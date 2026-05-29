@@ -1,5 +1,6 @@
 package ui;
 
+import manager.HighscoreManager;
 import ui.backgrounds.BackgroundOne;
 
 import javax.swing.*;
@@ -8,11 +9,14 @@ import java.awt.*;
     public class EndScreen {
     private JFrame frame;
     private int score;
+    private HighscoreManager highscoreManager;
 
 
     public EndScreen(int score){
         frame = new JFrame();
         this.score = score;
+        this.highscoreManager = new HighscoreManager();
+        this.highscoreManager.addScore(score);
         innit();
     }
 
@@ -38,7 +42,7 @@ import java.awt.*;
         jbmenu.setBackground(Color.BLACK);
         jbmenu.setForeground(Color.WHITE);
 
-        JButton jbhs = new JButton("MENU");
+        JButton jbhs = new JButton("highscore");
         jbhs.setFont(new Font("Comic Sans",Font.PLAIN,30));
         jbhs.setBackground(Color.BLACK);
         jbhs.setForeground(Color.WHITE);
@@ -55,7 +59,7 @@ import java.awt.*;
         });
 
         jbhs.addActionListener(e-> {
-
+            HighScoreScreen hss = new HighScoreScreen(frame);
         });
 
 
