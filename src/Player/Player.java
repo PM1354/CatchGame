@@ -57,24 +57,43 @@ public class Player {
         this.windowHeight = height;
     }
 
+    /**
+     * Adds score to the player
+     * @param i number of points to add
+     */
     public void addScore(int i){
         score +=i;
     }
 
-    public void looseScore(int i){score-=i;}
+    /**
+     * Subtracts score from the player
+     * @param i number of points to subtract
+     */
+    public void loseScore(int i){score-=i;}
 
-    public void addHears(int i){
+    /**
+     * Adds a heart to the player, but only if it doesn't exceed the maximum
+     * @param i number of hearts to add
+     */
+    public void addHearts(int i){
         if (hearts<maxhearts){
             hearts +=i;
         }
     }
 
-    public void looseHeart(){
+    /**
+     * Removes one heart from the player if it has at least one
+     */
+    public void loseHeart(){
         if (hearts>0){
             hearts--;
         }
     }
 
+    /**
+     * Checks if the player is alive (has at least one heart)
+     * @return true if player is alive, false otherwise
+     */
     public boolean isAlive(){
         if(hearts==0){
             return false;
@@ -82,6 +101,9 @@ public class Player {
         return true;
     }
 
+    /**
+     * Moves the player to the right by speed value, with collision check against right window edge
+     */
     public void moveRight(){
         x = x + speed;
         int rightEdge = x + hitboxesX / 2;
@@ -90,6 +112,9 @@ public class Player {
         }
     }
 
+    /**
+     * Moves the player to the left by speed value, with collision check against left window edge
+     */
     public void moveLeft(){
         x = x - speed;
         int leftEdge = x - hitboxesX / 2;
@@ -98,6 +123,9 @@ public class Player {
         }
     }
 
+    /**
+     * Enlarges the player's platform by 10 pixels in width
+     */
     public void biggerPlatform(){
         hitboxesX+=10;
     }

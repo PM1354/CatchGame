@@ -18,14 +18,22 @@ public class BombFallingObject extends FallingObject implements CatchingItem{
         return primary;
     }
 
+    /**
+     * Returns the text displayed when the bomb is caught
+     * @return text with heart loss
+     */
     @Override
     public String playerCatcheObjectString() {
         return "-1\uD83D\uDC94";
     }
 
+    /**
+     * Handles bomb being caught by player - removes 1 heart
+     * @param p player who caught the bomb
+     */
     @Override
     public void catched(Player p) {
-        p.looseHeart();
+        p.loseHeart();
         playerCatcheObject();
     }
 }

@@ -18,15 +18,22 @@ public class HeartFallingObject extends FallingObject implements CatchingItem {
         return primary;
     }
 
+    /**
+     * Returns the text displayed when the heart is caught
+     * @return text with heart addition
+     */
     @Override
     public String playerCatcheObjectString() {
         return "+1❤️";
     }
 
+    /**
+     * Handles heart being caught by player - adds 1 heart
+     * @param p player who caught the heart
+     */
     @Override
     public void catched(Player p) {
-        p.addHears(1);
+        p.addHearts(1);
         playerCatcheObject();
     }
 }
-

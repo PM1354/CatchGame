@@ -18,11 +18,19 @@ public class LargerPlatformFallingObject extends FallingObject implements Catchi
         return primary;
     }
 
+    /**
+     * Returns the text displayed when platform enlargement is caught
+     * @return text with platform enlargement
+     */
     @Override
     public String playerCatcheObjectString() {
         return "+10px";
     }
 
+    /**
+     * Handles platform enlargement being caught - enlarges the platform
+     * @param p player who caught the enlargement
+     */
     @Override
     public void catched(Player p) {
         p.biggerPlatform();

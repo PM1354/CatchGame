@@ -4,8 +4,8 @@ import FallingObjects.CatchingItem;
 import FallingObjects.FallingObject;
 import Player.Player;
 import Player.Texts.GameTexts;
-import manager.Wawemanager;
 import ui.backgrounds.BackgroundOne;
+import manager.Wawemanager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,6 +38,9 @@ public class GamePanel extends BackgroundOne implements KeyListener, ActionListe
         gameTimer = new Timer(ticks, this);
     }
 
+    /**
+     * Starts the game - initializes player, wave manager and starts game timer
+     */
     public void startGame() {
         player = new Player(1000,600);
         manager= new Wawemanager(width);
@@ -49,18 +52,33 @@ public class GamePanel extends BackgroundOne implements KeyListener, ActionListe
         gameTimer.start();
     }
 
+    /**
+     * Stops the game
+     */
     public void stopGame()   {
         gameTimer.stop();
     }
 
+    /**
+     * Resumes the game after pausing
+     */
     public void resumeGame() {
         requestFocusInWindow(); gameTimer.start();
     }
 
+    /**
+     * Returns the current score
+     * @return player score
+     */
     public int  getScore()   {
         return player != null ? player.getScore() : 0;
     }
 
+    /**
+     * Checks if a falling object collided with the player's platform
+     * @param obj falling object
+     * @return true if collision, false otherwise
+     */
     public boolean isColliding(FallingObject obj) {
         int left  = player.getX() - player.getHitboxesX() / 2;
         int right = player.getX() + player.getHitboxesX()/ 2;
@@ -69,7 +87,11 @@ public class GamePanel extends BackgroundOne implements KeyListener, ActionListe
         return obj.getX() >= left - 8 && obj.getX() <= right + 8 && obj.getY() >= top - 5 && obj.getY() <= bot;
     }
 
-    public void Collision(FallingObject obj) {
+    /**
+     * Handles collision between a falling object and the player
+     * @param obj falling object
+     */
+    public void collision(FallingObject obj) {
         if (obj instanceof CatchingItem c) {
             c.catched(player);
         }
@@ -77,6 +99,9 @@ public class GamePanel extends BackgroundOne implements KeyListener, ActionListe
         obj.playerCatcheObject();
     }
 
+    /**
+     * Updates the game state - player movement, falling objects and collisions
+     */
     public void update() {
         if (leftPressed) {
             player.moveLeft();
@@ -94,7 +119,7 @@ public class GamePanel extends BackgroundOne implements KeyListener, ActionListe
                 continue;
             }
             if (isColliding(obj)) {
-                Collision(obj);
+                collision(obj);
                 it.remove();
             }
         }
@@ -118,12 +143,18 @@ public class GamePanel extends BackgroundOne implements KeyListener, ActionListe
         }
     }
 
+    /**
+     * Draws all falling objects
+     */
     public void drawFallingObjects(Graphics2D g2d) {
         for (FallingObject obj : fallingObjects) {
             obj.drawCircle(g2d, obj.getColor());
         }
     }
 
+    /**
+     * Draws the player's platform
+     */
     public void drawBasket(Graphics2D g2d) {
         int x = player.getX() - player.getHitboxesX()/2;
         int y = player.getY();
@@ -136,6 +167,9 @@ public class GamePanel extends BackgroundOne implements KeyListener, ActionListe
         g2d.drawRoundRect(x,y,w,h,10,10);
     }
 
+    /**
+     * Draws floating labels (score/bonus text from caught items)
+     */
     public void drawFloatingLabels(Graphics2D g2d) {
         for (GameTexts txt : floatingLabels) {
             txt.draw(g2d);
@@ -143,6 +177,9 @@ public class GamePanel extends BackgroundOne implements KeyListener, ActionListe
     }
 
 
+    /**
+     * Draws HUD - score, hearts and current wave
+     */
     public void drawHUD(Graphics2D g2d) {
         g2d.setColor(new Color(0, 0, 0, 100));
         g2d.fillRect(0, 0, width, 48);
@@ -161,16 +198,12 @@ public class GamePanel extends BackgroundOne implements KeyListener, ActionListe
         g2d.drawString(wave, 250, 30);
     }
 
-    public void drawBackground(Graphics2D g2d){
-
-    }
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         if (player == null || manager == null) return;
-        drawBackground(g2d);
         drawFallingObjects(g2d);
         drawBasket(g2d);
         drawFloatingLabels(g2d);

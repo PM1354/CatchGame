@@ -18,11 +18,19 @@ public class NormalFallingObject extends FallingObject implements CatchingItem {
         return primary;
     }
 
+    /**
+     * Returns the text displayed when the object is caught
+     * @return text with points increase
+     */
     @Override
     public String playerCatcheObjectString() {
         return "+100⭐";
     }
 
+    /**
+     * Handles object being caught by player - adds 100 points
+     * @param p player who caught the object
+     */
     @Override
     public void catched(Player p) {
         p.addScore(100);

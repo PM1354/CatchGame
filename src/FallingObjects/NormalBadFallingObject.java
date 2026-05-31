@@ -6,8 +6,8 @@ import java.awt.*;
 
 public class NormalBadFallingObject extends FallingObject implements CatchingItem{
 
-    private final Color primary = new Color(12, 67, 36);
-    private final Color borde = new Color(0,0,0);
+    private final Color primary = new Color(12, 200, 36);
+    private final Color border = new Color(0,0,0);
 
     public NormalBadFallingObject(int x, int y, float speed) {
         super(x, y, 20, speed, false);
@@ -18,14 +18,22 @@ public class NormalBadFallingObject extends FallingObject implements CatchingIte
         return primary;
     }
 
+    /**
+     * Returns the text displayed when the object is caught
+     * @return text with points decrease
+     */
     @Override
     public String playerCatcheObjectString() {
         return "-500⭐";
     }
 
+    /**
+     * Handles object being caught by player - removes 500 points
+     * @param p player who caught the object
+     */
     @Override
     public void catched(Player p) {
-        p.looseScore(500);
+        p.loseScore(500);
         playerCatcheObject();
     }
 }

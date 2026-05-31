@@ -18,27 +18,43 @@ public class Wawemanager {
     private final int panelwidth;
     private final Random random;
 
+
     public Wawemanager (int panelwidth){
         this.panelwidth = panelwidth;
         this.random = new Random();
         reset();
     }
 
+    /**
+     * Resets the wave to the first wave
+     */
     public void reset() {
         currentWave    = 1;
         tickselapsed   = 0;
         tickssincespawn = 0;
     }
 
+    /**
+     * Moves to the next wave
+     */
     public void nextWave() {
         currentWave++;
         tickselapsed    = 0;
         tickssincespawn = 0;
     }
+    /**
+     * Checks if the wave is complete
+     * @return true if wave is complete, false otherwise
+     */
     public boolean isWaveComplete()  {
         return tickselapsed >= ticksforwave;
     }
 
+    /**
+     * Creates a random falling object based on the current wave
+     * @param x x-coordinate
+     * @return newly created falling object
+     */
     public FallingObject createObject(int x) {
         float speed = speedbase + (currentWave - 1) * speedplus;
         int roll = random.nextInt(100);
@@ -55,6 +71,10 @@ public class Wawemanager {
         }
     }
 
+    /**
+     * Creates a list of falling objects to spawn (in higher waves can be 2 at once)
+     * @return list of newly created objects
+     */
     public List<FallingObject> spawnObjects() {
         List<FallingObject> list = new ArrayList<>();
         int count = (currentWave >= 4 && random.nextInt(3) == 0) ? 2 : 1;
@@ -65,6 +85,10 @@ public class Wawemanager {
         return list;
     }
 
+    /**
+     * Updates the wave state and generates new falling objects
+     * @return list of newly spawned falling objects
+     */
     public List<FallingObject> update() {
         List<FallingObject> spawned = new ArrayList<>();
         tickselapsed++;

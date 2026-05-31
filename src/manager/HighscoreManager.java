@@ -10,6 +10,10 @@ public class HighscoreManager {
     private static final String FILE_NAME  = "highscores.txt";
     private static final int    MAX_SCORES = 10;
 
+    /**
+     * Adds a score to the high scores table if it's greater than 0
+     * @param score score to add
+     */
     public void addScore(int score) {
         if (score <= 0) return;
 
@@ -24,6 +28,10 @@ public class HighscoreManager {
         saveScores(scores);
     }
 
+    /**
+     * Loads all scores from file and sorts them in descending order
+     * @return list of scores
+     */
     public List<Integer> loadScores() {
         File file = new File(FILE_NAME);
         if (!file.exists()) return new ArrayList<>();
@@ -46,6 +54,10 @@ public class HighscoreManager {
         return scores;
     }
 
+    /**
+     * Saves scores to file
+     * @param scores list of scores to save
+     */
     private void saveScores(List<Integer> scores) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
             for (Integer score : scores) {

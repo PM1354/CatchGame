@@ -19,10 +19,16 @@ public abstract class FallingObject {
 
     public abstract Color getColor();
 
+    /**
+     * Moves the object downward (falling)
+     */
     public void falling(){
         y+=speed;
     }
 
+    /**
+     * Marks the object as caught
+     */
     public void playerCatcheObject(){
         catched=true;
     }
@@ -30,6 +36,9 @@ public abstract class FallingObject {
 
     public abstract String playerCatcheObjectString();
 
+    /**
+     * Updates the object's position
+     */
     public void update() {
 
         y += (int) speed;
@@ -55,6 +64,11 @@ public abstract class FallingObject {
         return catched;
     }
 
+    /**
+     * Draws the object as a circle on the screen
+     * @param g2d the graphics context
+     * @param fill fill color
+     */
     public void drawCircle(Graphics2D g2d, Color fill) {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(fill);

@@ -10,12 +10,16 @@ public class HighScoreScreen extends JDialog {
 
     private final HighscoreManager highScoreManager;
 
+
     public HighScoreScreen(JFrame owner) {
         super(owner, "High Scores", true);
         this.highScoreManager = new HighscoreManager();
         init();
     }
 
+    /**
+     * Initializes the high score screen UI components and loads scores from the file
+     */
     public void init() {
         setSize(400, 600);
         setResizable(false);

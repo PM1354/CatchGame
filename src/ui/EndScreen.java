@@ -17,10 +17,13 @@ import java.awt.*;
         this.score = score;
         this.highscoreManager = new HighscoreManager();
         this.highscoreManager.addScore(score);
-        innit();
+        init();
     }
 
-    public void innit(){
+    /**
+     * Initializes the game over screen UI components
+     */
+    public void init(){
 
         JPanel jp = new BackgroundOne();
         jp.setLayout(new GridBagLayout());

@@ -9,10 +9,13 @@ public class StartScreen {
     private JFrame frame;
     public StartScreen(){
         frame = new JFrame();
-        innit();
+        init();
     }
 
-    public void innit(){
+    /**
+     * Initializes the start screen UI components
+     */
+    public void init(){
         frame.setSize(600,1000);
         frame.setPreferredSize(new Dimension(600,1000));
         frame.setLocationRelativeTo(null);
@@ -64,4 +67,3 @@ public class StartScreen {
 
     }
 }
-

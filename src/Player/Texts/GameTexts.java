@@ -5,7 +5,6 @@ import java.awt.*;
 public class GameTexts {
 
     private final int timeVisible = 45;
-    private final float rising =1.2f;
     private float x;
     private float y;
     private final String text;
@@ -19,14 +18,25 @@ public class GameTexts {
         this.x = x;
     }
 
+    /**
+     * Increases the timer for how long the text is visible
+     */
     public void timerplus(){
         ticksVisible++;
+    
     }
 
+    /**
+     * Checks if text is no longer visible
+     * @return true if text is not visible, false otherwise
+     */
     public boolean notActive(){
         return ticksVisible>=timeVisible;
     }
 
+    /**
+     * Draws text on the screen
+     */
     public void draw(Graphics2D g2d) {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setFont(new Font("SansSerif", Font.BOLD, 16));
